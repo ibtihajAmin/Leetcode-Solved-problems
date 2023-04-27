@@ -4,11 +4,24 @@
 
 //Two sorted list should be merged
 const mergeTwoLists = (list1, list2) => {
-  /* If any of list is empty, then
-  other list should be returned as mergedSorted list*/
-  if (!list1) {
-    return list2;
-  } else if (!list2) {
-    return list1;
+  const head = new ListNode(Infinity);
+  let current = head;
+
+  while (list1 !== null && list2 !== null) {
+    if (list1.data < list2.data) {
+      current.next = list1;
+      list1 = list1.next;
+    } else {
+      current.next = list2;
+      list2 = list2.next;
+    }
+    current = current.next;
   }
+
+  if (list1 == null) {
+    current.next = list2;
+  } else {
+    current.next = list1;
+  }
+  return head.next;
 };
