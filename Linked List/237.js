@@ -3,4 +3,9 @@
 */
 
 //Driver Function
-const deleteNode = (node) => {};
+const deleteNode = (node) => {
+  let head = node;
+
+  head.val = head.next.val;
+  head.next = head.next.next;
+};
